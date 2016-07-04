@@ -1,7 +1,7 @@
 var board = document.getElementById("board");
 var button = document.getElementById("button");
 var squares = document.getElementsByClassName("square");
-// not sure why getElementByTagName doesn't work
+// not sure why getElementsByTagName doesn't work
 
 var count = 0;
 var arrX = [];
@@ -9,8 +9,8 @@ var arrO = [];
 
 // players
 
-board.addEventListener("click", function(e) {
-  var target = e.target;
+board.addEventListener("click", function(y) {
+  var target = y.target;
 
   if (target.getAttribute("class") && !target.getAttribute("sel")) { // double check
     if (!(count % 2)) {
@@ -73,7 +73,7 @@ function winner() {
     document.getElementById("5").innerHTML == "X" &&
     document.getElementById("7").innerHTML == "X"
   ) {
-    return document.querySelector("h2").innerText = "Player X wins!";
+    document.querySelector("h2").innerHTML = "Player X wins!";
 
   } else if (
     document.getElementById("1").innerHTML == "O" &&
@@ -96,6 +96,7 @@ function winner() {
     document.getElementById("5").innerHTML == "O" &&
     document.getElementById("8").innerHTML == "O" ||
 
+
     document.getElementById("3").innerHTML == "O" &&
     document.getElementById("6").innerHTML == "O" &&
     document.getElementById("9").innerHTML == "O" ||
@@ -108,7 +109,7 @@ function winner() {
     document.getElementById("5").innerHTML == "O" &&
     document.getElementById("7").innerHTML == "O"
   ) {
-    return document.querySelector("h2").innerText = "Player O wins!";
+    document.querySelector("h2").innerHTML = "Player O wins!";
   }
 }
 
