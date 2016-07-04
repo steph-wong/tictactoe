@@ -73,7 +73,8 @@ function winner() {
     document.getElementById("5").innerHTML == "X" &&
     document.getElementById("7").innerHTML == "X"
   ) {
-    return document.querySelector("h2").innerText = "Player X wins!";
+    alert("Player X wins!");
+    reset();
 
   } else if (
     document.getElementById("1").innerHTML == "O" &&
@@ -108,8 +109,8 @@ function winner() {
     document.getElementById("5").innerHTML == "O" &&
     document.getElementById("7").innerHTML == "O"
   ) {
-    return document.querySelector("h2").innerText = "Player O wins!";
-  }
+    alert("Player O wins!");
+    reset();  }
 }
 
 

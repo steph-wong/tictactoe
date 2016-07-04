@@ -1,7 +1,7 @@
 var board = document.getElementById("board");
 var button = document.getElementById("button");
 var squares = document.getElementsByClassName("square");
-// not sure why getElementsByTagName doesn't work
+var marq = document.querySelector("h2");
 
 var count = 0;
 var arrX = [];
@@ -12,26 +12,27 @@ var arrO = [];
 board.addEventListener("click", function(y) {
   var target = y.target;
 
-  if (target.getAttribute("class") && !target.getAttribute("sel")) { // double check
+  if (target.getAttribute("class") && !target.getAttribute("sel")) {
+    // double check
     if (!(count % 2)) {
       count += 1;
       target.innerHTML = "O";
       target.setAttribute("sel", "O");
       arrO.push(document.getElementById("id"));
-      return document.querySelector("h2").innerHTML = "Player X's turn";
+      return marq.innerHTML = "Player X's turn";
 
     } else {
       count += 1;
       target.innerHTML = "X";
       target.setAttribute("sel", "X");
       arrX.push(document.getElementById("id"));
-      return document.querySelector("h2").innerHTML = "Player O's turn";
+      return marq.innerHTML = "Player O's turn";
     }
 
     winner();
 
     if (arrO.length + arrX.length === 9) {
-      return document.querySelector("h2").innerHTML = "It's a tie!";
+      return marq.innerHTML = "It's a tie!";
     }
   }
 });
@@ -40,76 +41,101 @@ board.addEventListener("click", function(y) {
 // win condition
 
 function winner() {
-  if (
-    document.getElementById("1").innerHTML == "X" &&
-    document.getElementById("2").innerHTML == "X" &&
-    document.getElementById("3").innerHTML == "X" ||
+  if (document.getElementById("1").innerHTML === "X" &&
+    document.getElementById("2").innerHTML === "X" &&
+    document.getElementById("3").innerHTML === "X") {
+    alert("Player X wins!");
 
-    document.getElementById("4").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("6").innerHTML == "X" ||
+    } else if (
+    document.getElementById("4").innerHTML === "X" &&
+    document.getElementById("5").innerHTML === "X" &&
+    document.getElementById("6").innerHTML === "X") {
+      alert("Player X wins!");
 
-    document.getElementById("7").innerHTML == "X" &&
-    document.getElementById("8").innerHTML == "X" &&
-    document.getElementById("9").innerHTML == "X" ||
+    } else if (
+    document.getElementById("7").innerHTML === "X" &&
+    document.getElementById("8").innerHTML === "X" &&
+    document.getElementById("9").innerHTML === "X") {
+      alert("Player X wins!");
 
-    document.getElementById("1").innerHTML == "X" &&
-    document.getElementById("4").innerHTML == "X" &&
-    document.getElementById("7").innerHTML == "X" ||
-
-    document.getElementById("2").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("8").innerHTML == "X" ||
-
-    document.getElementById("3").innerHTML == "X" &&
-    document.getElementById("6").innerHTML == "X" &&
-    document.getElementById("9").innerHTML == "X" ||
-
-    document.getElementById("1").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("9").innerHTML == "X" ||
-
-    document.getElementById("3").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("7").innerHTML == "X"
-  ) {
-    document.querySelector("h2").innerHTML = "Player X wins!";
+    } else if (
+    document.getElementById("1").innerHTML === "X" &&
+    document.getElementById("4").innerHTML === "X" &&
+    document.getElementById("7").innerHTML === "X") {
+      alert("Player X wins!");
 
   } else if (
-    document.getElementById("1").innerHTML == "O" &&
-    document.getElementById("2").innerHTML == "O" &&
-    document.getElementById("3").innerHTML == "O" ||
+    document.getElementById("2").innerHTML === "X" &&
+    document.getElementById("5").innerHTML === "X" &&
+    document.getElementById("8").innerHTML === "X") {
+      alert("Player X wins!");
 
-    document.getElementById("4").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("6").innerHTML == "O" ||
+  } else if (
+    document.getElementById("3").innerHTML === "X" &&
+    document.getElementById("6").innerHTML === "X" &&
+    document.getElementById("9").innerHTML === "X") {
+      alert("Player X wins!");
 
-    document.getElementById("7").innerHTML == "O" &&
-    document.getElementById("8").innerHTML == "O" &&
-    document.getElementById("9").innerHTML == "O" ||
+  } else if (
+    document.getElementById("1").innerHTML === "X" &&
+    document.getElementById("5").innerHTML === "X" &&
+    document.getElementById("9").innerHTML === "X") {
+      alert("Player X wins!");
 
-    document.getElementById("1").innerHTML == "O" &&
-    document.getElementById("4").innerHTML == "O" &&
-    document.getElementById("7").innerHTML == "O" ||
+  } else if (
+    document.getElementById("3").innerHTML === "X" &&
+    document.getElementById("5").innerHTML === "X" &&
+    document.getElementById("7").innerHTML === "X") {
+     alert("Player X wins!");
 
-    document.getElementById("2").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("8").innerHTML == "O" ||
+  } else if (
+    document.getElementById("1").innerHTML === "O" &&
+    document.getElementById("2").innerHTML === "O" &&
+    document.getElementById("3").innerHTML === "O") {
+      alert("Player O wins!");
 
+    } else if (
+    document.getElementById("4").innerHTML === "O" &&
+    document.getElementById("5").innerHTML === "O" &&
+    document.getElementById("6").innerHTML === "O") {
+      alert("Player O wins!");
 
-    document.getElementById("3").innerHTML == "O" &&
-    document.getElementById("6").innerHTML == "O" &&
-    document.getElementById("9").innerHTML == "O" ||
+    } else if (
+    document.getElementById("7").innerHTML === "O" &&
+    document.getElementById("8").innerHTML === "O" &&
+    document.getElementById("9").innerHTML === "O") {
+      alert("Player O wins!");
 
-    document.getElementById("1").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("9").innerHTML == "O" ||
+    } else if (
+    document.getElementById("1").innerHTML === "O" &&
+    document.getElementById("4").innerHTML === "O" &&
+    document.getElementById("7").innerHTML === "O") {
+      alert("Player O wins!");
 
-    document.getElementById("3").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("7").innerHTML == "O"
-  ) {
-    document.querySelector("h2").innerHTML = "Player O wins!";
+    } else if (
+    document.getElementById("2").innerHTML === "O" &&
+    document.getElementById("5").innerHTML === "O" &&
+    document.getElementById("8").innerHTML === "O") {
+      alert("Player O wins!");
+
+    } else if (
+    document.getElementById("3").innerHTML === "O" &&
+    document.getElementById("6").innerHTML === "O" &&
+    document.getElementById("9").innerHTML === "O") {
+      alert("Player O wins!");
+
+    } else if (
+    document.getElementById("1").innerHTML === "O" &&
+    document.getElementById("5").innerHTML === "O" &&
+    document.getElementById("9").innerHTML === "O") {
+      alert("Player O wins!");
+
+    } else if (
+    document.getElementById("3").innerHTML === "O" &&
+    document.getElementById("5").innerHTML === "O" &&
+    document.getElementById("7").innerHTML === "O") {
+     alert("Player O wins!");
+     reset();
   }
 }
 
