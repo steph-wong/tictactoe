@@ -9,8 +9,8 @@ var arrO = [];
 
 // players
 
-board.addEventListener("click", function(y) {
-  var target = y.target;
+board.addEventListener("click", function(e) {
+  var target = e.target;
 
   if (target.getAttribute("class") && !target.getAttribute("sel")) { // double check
     if (!(count % 2)) {
@@ -95,7 +95,6 @@ function winner() {
     document.getElementById("2").innerHTML == "O" &&
     document.getElementById("5").innerHTML == "O" &&
     document.getElementById("8").innerHTML == "O" ||
-
 
     document.getElementById("3").innerHTML == "O" &&
     document.getElementById("6").innerHTML == "O" &&
