@@ -1,116 +1,78 @@
 var board = document.getElementById("board");
 var button = document.getElementById("button");
 var squares = document.getElementsByClassName("square");
-// not sure why getElementByTagName doesn't work
+// not sure why getElementsByTagName doesn't work
 
 var count = 0;
-var arrX = [];
-var arrO = [];
 
 // players
 
 board.addEventListener("click", function(e) {
   var target = e.target;
 
-  if (target.getAttribute("class") && !target.getAttribute("sel")) { // double check
+  if (target.getAttribute("class") && !target.getAttribute("sel")) {
+
     if (!(count % 2)) {
       count += 1;
       target.innerHTML = "O";
-      target.setAttribute("sel", "O");
+      target.setAttribute("sel", "o");
       arrO.push(document.getElementById("id"));
-      return document.querySelector("h2").innerHTML = "Player X's turn";
+      document.querySelector("h2").innerHTML = "Player X's turn";
 
     } else {
       count += 1;
       target.innerHTML = "X";
-      target.setAttribute("sel", "X");
+      target.setAttribute("sel", "x");
       arrX.push(document.getElementById("id"));
-      return document.querySelector("h2").innerHTML = "Player O's turn";
+      document.querySelector("h2").innerHTML = "Player O's turn";
+
     }
-
     winner();
-
     if (arrO.length + arrX.length === 9) {
-      return document.querySelector("h2").innerHTML = "It's a tie!";
+      document.querySelector("h2").innerHTML = "It's a tie";
+      reset();
     }
   }
 });
 
 
-// win condition
+// win conditions
+
+var winCond = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7]
+];
+
+var arrO = [];
+var arrX = [];
+
+// win alert
+// check for winCond in arrX
 
 function winner() {
-  if (
-    document.getElementById("1").innerHTML == "X" &&
-    document.getElementById("2").innerHTML == "X" &&
-    document.getElementById("3").innerHTML == "X" ||
+  for (var i = 0; i < winCond.length; i++) {
+    if (winCond[i].every(function(w) {
+        return arrX.indexOf(w) !== -1;
+      }))
+// nd: double check every()!! - check values of all elements in array
 
-    document.getElementById("4").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("6").innerHTML == "X" ||
+    {
+      alert("Player X Wins!");
+      reset();
 
-    document.getElementById("7").innerHTML == "X" &&
-    document.getElementById("8").innerHTML == "X" &&
-    document.getElementById("9").innerHTML == "X" ||
-
-    document.getElementById("1").innerHTML == "X" &&
-    document.getElementById("4").innerHTML == "X" &&
-    document.getElementById("7").innerHTML == "X" ||
-
-    document.getElementById("2").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("8").innerHTML == "X" ||
-
-    document.getElementById("3").innerHTML == "X" &&
-    document.getElementById("6").innerHTML == "X" &&
-    document.getElementById("9").innerHTML == "X" ||
-
-    document.getElementById("1").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("9").innerHTML == "X" ||
-
-    document.getElementById("3").innerHTML == "X" &&
-    document.getElementById("5").innerHTML == "X" &&
-    document.getElementById("7").innerHTML == "X"
-  ) {
-    alert("Player X wins!");
-    reset();
-
-  } else if (
-    document.getElementById("1").innerHTML == "O" &&
-    document.getElementById("2").innerHTML == "O" &&
-    document.getElementById("3").innerHTML == "O" ||
-
-    document.getElementById("4").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("6").innerHTML == "O" ||
-
-    document.getElementById("7").innerHTML == "O" &&
-    document.getElementById("8").innerHTML == "O" &&
-    document.getElementById("9").innerHTML == "O" ||
-
-    document.getElementById("1").innerHTML == "O" &&
-    document.getElementById("4").innerHTML == "O" &&
-    document.getElementById("7").innerHTML == "O" ||
-
-    document.getElementById("2").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("8").innerHTML == "O" ||
-
-    document.getElementById("3").innerHTML == "O" &&
-    document.getElementById("6").innerHTML == "O" &&
-    document.getElementById("9").innerHTML == "O" ||
-
-    document.getElementById("1").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("9").innerHTML == "O" ||
-
-    document.getElementById("3").innerHTML == "O" &&
-    document.getElementById("5").innerHTML == "O" &&
-    document.getElementById("7").innerHTML == "O"
-  ) {
-    alert("Player O wins!");
-    reset();  }
+    } else if (winCond[i].every(function(w) {
+        return arrO.indexOf(w) !== -1;
+      })) {
+        alert("Player O Wins!");
+      reset();
+    }
+  }
 }
 
 
