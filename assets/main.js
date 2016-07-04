@@ -73,7 +73,7 @@ function winner() {
     document.getElementById("5").innerHTML == "X" &&
     document.getElementById("7").innerHTML == "X"
   ) {
-    document.querySelector("h2").innerHTML = "Player X wins!";
+    return document.querySelector("h2").innerHTML = "Player X wins!";
 
   } else if (
     document.getElementById("1").innerHTML == "O" &&
@@ -109,7 +109,7 @@ function winner() {
     document.getElementById("5").innerHTML == "O" &&
     document.getElementById("7").innerHTML == "O"
   ) {
-    document.querySelector("h2").innerHTML = "Player O wins!";
+    return document.querySelector("h2").innerHTML = "Player O wins!";
   }
 }
 
