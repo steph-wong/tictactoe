@@ -123,6 +123,7 @@ function reset() {
     arrX = [];
     arrO = [];
     count = 0;
+    document.querySelector("h2").innerHTML = "Player O plays first";
   }
 }
 
