@@ -4,9 +4,9 @@ var squares = document.getElementsByClassName("square");
 // not sure why getElementsByTagName doesn't work
 
 var count = 0;
+var win = false;
 
 // players
-
 board.addEventListener("click", function(e) {
   var target = e.target;
 
@@ -27,7 +27,9 @@ board.addEventListener("click", function(e) {
       document.querySelector("h2").innerHTML = "Player O's turn";
 
     }
+
     winner();
+
     if (arrO.length + arrX.length === 9) {
       document.querySelector("h2").innerHTML = "It's a tie";
       reset();
@@ -37,47 +39,83 @@ board.addEventListener("click", function(e) {
 
 
 // win conditions
-
-var winCond = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-  [1, 4, 7],
-  [2, 5, 8],
-  [3, 6, 9],
-  [1, 5, 9],
-  [3, 5, 7]
-];
-
 var arrO = [];
 var arrX = [];
 
-// win alert
-// check for winCond in arrX
+var winner = function() {
+  if(document.getElementById("1").innerHTML === "X" &&
+     document.getElementById("2").innerHTML === "X" &&
+     document.getElementById("3").innerHTML === "X" ||
 
-function winner() {
-  for (var i = 0; i < winCond.length; i++) {
-    if (winCond[i].every(function(w) {
-        return arrX.indexOf(w) !== -1;
-      }))
-// nd: double check every()!! - check values of all elements in array
+     document.getElementById("4").innerHTML === "X" &&
+     document.getElementById("5").innerHTML === "X" &&
+     document.getElementById("6").innerHTML === "X" ||
 
-    {
-      alert("Player X Wins!");
-      reset();
+     document.getElementById("7").innerHTML === "X" &&
+     document.getElementById("8").innerHTML === "X" &&
+     document.getElementById("9").innerHTML === "X" ||
 
-    } else if (winCond[i].every(function(w) {
-        return arrO.indexOf(w) !== -1;
-      })) {
-        alert("Player O Wins!");
-      reset();
-    }
+     document.getElementById("1").innerHTML === "X" &&
+     document.getElementById("4").innerHTML === "X" &&
+     document.getElementById("7").innerHTML === "X" ||
+
+     document.getElementById("2").innerHTML === "X" &&
+     document.getElementById("5").innerHTML === "X" &&
+     document.getElementById("8").innerHTML ==="X" ||
+
+     document.getElementById("3").innerHTML === "X" &&
+     document.getElementById("6").innerHTML === "X" &&
+     document.getElementById("9").innerHTML === "X" ||
+
+     document.getElementById("1").innerHTML === "X" &&
+     document.getElementById("5").innerHTML === "X" &&
+     document.getElementById("9").innerHTML === "X" ||
+
+     document.getElementById("3").innerHTML === "X" &&
+     document.getElementById("5").innerHTML === "X" &&
+     document.getElementById("7").innerHTML === "X")
+  {
+    alert("Player X win!");
+    reset();
   }
-}
+  else if (document.getElementById("1").innerHTML === "O" &&
+           document.getElementById("2").innerHTML === "O" &&
+           document.getElementById("3").innerHTML === "O" ||
 
+           document.getElementById("4").innerHTML === "O" &&
+           document.getElementById("5").innerHTML === "O" &&
+           document.getElementById("6").innerHTML === "O" ||
+
+           document.getElementById("7").innerHTML === "O" &&
+           document.getElementById("8").innerHTML === "O" &&
+           document.getElementById("9").innerHTML === "O" ||
+
+           document.getElementById("1").innerHTML === "O" &&
+           document.getElementById("4").innerHTML === "O" &&
+           document.getElementById("7").innerHTML === "O" ||
+
+           document.getElementById("2").innerHTML === "O" &&
+           document.getElementById("5").innerHTML === "O" &&
+           document.getElementById("8").innerHTML === "O" ||
+
+           document.getElementById("3").innerHTML === "O" &&
+           document.getElementById("6").innerHTML === "O" &&
+           document.getElementById("9").innerHTML === "O" ||
+
+           document.getElementById("1").innerHTML === "O" &&
+           document.getElementById("5").innerHTML === "O" &&
+           document.getElementById("9").innerHTML === "O" ||
+
+           document.getElementById("3").innerHTML === "O" &&
+           document.getElementById("5").innerHTML === "O" &&
+           document.getElementById("7").innerHTML === "O")
+  {
+    alert("Player O wins!");
+    reset();
+  }
+};
 
 // reset
-
 function reset() {
   for (var i = 0; i < squares.length; i++) {
     squares[i].innerHTML = "";
